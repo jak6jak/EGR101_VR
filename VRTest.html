@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bestiejs/platform.js/master/platform.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-always-fullscreen-component/master/dist/aframe-always-fullscreen-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras.animation-mixer@3.4.0/dist/aframe-extras.animation-mixer.js"></script>
+    <script>
+        AFRAME.registerComponent('auto-enter-vr', {
+            init: function () {
+                var scene = this;
+                console.log('Automatically entering VR...');
+                scene.el.sceneEl.enterVR();
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <a-scene embedded always-fullscreen auto-enter-vr>
+    <a-assets>
+        <!--Textures-->
+        <img id="redguyTexture" src="Vr_assets/skin_man.png">
+        <img id="skin_adventure" src="Vr_assets/skin_adventurer.png">
+        <img id="skin_man_blonde" src="Vr_assets/skin_man_blonde.png">
+        <img id="skin_man_suprised" src="Vr_assets/skin_man_suprised.png">
+        <img id="skin_manAlternative" src="Vr_assets/skin_manAlternative.png">
+        <img id="skin_robot" src="Vr_assets/skin_robot.png">
+        <img id="skin_womanAlternative" src="Vr_assets/skin_womanAlternative.png">
+        <img id="skin_woman" src="Vr_assets/skin_woman.png">
+
+        <!--Models first scene-->
+        <a-asset-item id="redguy1" src="Vr_assets/firstScene/redguy.obj"></a-asset-item>
+        <a-asset-item id="blueguy1" src="Vr_assets/firstScene/blueguy.obj"></a-asset-item>
+        <a-asset-item id="laptop" src="Vr_assets/firstScene/laptop.obj"></a-asset-item>
+        <a-asset-item id="robot" src="Vr_assets/firstScene/robot.obj"></a-asset-item>
+        <a-asset-item id="table" src="Vr_assets/firstScene/table.obj"></a-asset-item>
+        <!--Models second scene-->
+        <a-asset-item id="adventuer" src="Vr_assets/secondScene/adventuer.obj"></a-asset-item>
+        <a-asset-item id="redGuy2" src="Vr_assets/secondScene/redGuy2.obj"></a-asset-item>
+        <a-asset-item id="solarCar" src="Vr_assets/secondScene/solarCar.obj"></a-asset-item>
+        <!--Models third scene-->
+        <a-asset-item id="boySitting" src="Vr_assets/thirdScene/boySitting.obj"></a-asset-item>
+        <a-asset-item id="girlSitting" src="Vr_assets/thirdScene/girlSitting.obj"></a-asset-item>
+        <a-asset-item id="girlSitting2" src="Vr_assets/thirdScene/girlSitting2.obj"></a-asset-item>
+        <a-asset-item id="manSitting" src="Vr_assets/thirdScene/manSitting.obj"></a-asset-item>
+        
+    </a-assets>
+        <a-entity camera position="1.076 2.672 6.347" camera="active:false;userHeight:1.6" wasd-controls="" rotation="-9.511070802020422 11.115565725305657 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera="" data-aframe-inspector="default-camera"></a-entity>
+        <a-plane rotation="-90.01166961505233 180.02333923010465 180.02333923010465" scale="100 100 1" material="color:#3aa840"></a-plane>
+        <a-sky color="#87d2ff"></a-sky>
+        <!--First scene -->
+        <a-entity obj-model="obj: #redguy1" material="src: #redguyTexture"></a-entity>
+        <a-entity obj-model="obj: #blueguy1" material="src: #skin_man_suprised"></a-entity>
+        <a-entity obj-model="obj: #laptop" material="color: black"></a-entity>
+        <a-entity obj-model="obj: #robot" material="src: #skin_robot"></a-entity>
+        <a-entity obj-model="obj: #table" material="color:orange"></a-entity>
+        <!--Second scene-->
+        <a-entity obj-model="obj: #adventuer" material="src: #skin_adventure" position="-9.005 0 5.634" rotation="0 53.68614540375814 0"></a-entity>
+        <a-entity obj-model="obj:#redGuy2" material="src:#redguyTexture" position="-7.349 0 7.11" rotation="0 80.44327443636757 0"></a-entity>
+        <a-entity obj-model="obj:#solarCar" material="color:#157aea" position="-7.739 0 7.852" rotation="0 92.99105014973262 0"></a-entity>
+        <!-- third scene-->
+        <a-entity obj-model="obj: #boySitting" material="src: #skin_man_blonde" position="8.516 0 7.28" scale="0.6 0.6 0.6"></a-entity>
+        <a-entity obj-model="obj: #girlSitting" material="src: #skin_womanAlternative"  position="6.585 0 7.338" scale="0.6 0.6 0.6"></a-entity>
+        <a-entity obj-model="obj: #girlSitting2" material="src: #skin_woman" position="7.364 0 7.015" scale="0.6 0.6 0.6"></a-entity>
+        <a-entity obj-model="obj: #manSitting" material="src: #skin_manAlternative" position="8.38 0 4.694" scale="0.6 0.6 0.6"></a-entity>
+   
+        <!--Text-->
+        <a-entity id="first" text="width:20;value:A successful engineer is an engineer who designs unique and clever ways to help others.;color:#0b0b0b" position="2.101 5.82 -4.67"></a-entity>
+        <a-entity id="second" text="width:20;value:As a student it is important to be active in the community. Doing so allows you to meet new people and land new opportunities.;color:#000000" position="-9.878 8.076 4.736" rotation="0 85.485 0"></a-entity>
+        <a-entity id="third" text="width:20;value:The road map for a successful engineer is never ending, always try to find new things to learn and skills to develop.;color:#000000" position="-9.762 4.536 5.292" rotation="0.34377467707849396 90.1262611740785 -0.7448451336700702"></a-entity>
+        <a-entity id="fourth" text="width:20;value:I want to help create innovative multimedia to spread joy across the world.;color:#000000" position="12.484 3.4 17.314" rotation="0 -156.9331400863325 0"></a-entity>
+    </a-scene>
+</body>
+
+</html>
